@@ -1,58 +1,59 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Redirect } from "expo-router";
-import { View, Text, StyleSheet } from "react-native";
-import {axios} from "axios";
+import { View, Text, StyleSheet, ActivityIndicator } from "react-native";
+
 
 export default function home() {
-  const user = null;
-
-  const httpRequest = async () =>{
-    
-  axios({
-    method: "get",
-    url: "http://192.168.31.250/api/v1/check",
-    headers: {
-      Accept: "application/vmd.api+json"
-    },
-  }).then((response) => {
-    console.log(response.data);
-  });
-
   
-};
 
-return(
-  <View>
-    <Text> Hola shsjshsd </Text>
-  </View>
-);
+     
+
+
+
+  return (
+         <View>
+          <Redirect href="/expenses" />
+
+        </View> 
+
+
+        
+    );
+
+
 
   //if (!user == null) {
-    
-    //return <Redirect href="/login" />;
+
+  //return <Redirect href="/login" />;
   //}
 
- // return <Redirect href="/home" />;
+  // return <Redirect href="/home" />;
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "#e3b81c",
+    justifyContent: "center",
     alignItems: "center",
-    padding: 24,
+    
   },
   main: {
     flex: 1,
+    alignItems: "center",
     justifyContent: "center",
-    maxWidth: 960,
-    marginHorizontal: "auto",
+   
   },
-  title: {
-    fontSize: 64,
-    fontWeight: "bold",
+  text: {
+    color: "#3d220b",
+    fontSize: 20,
+    marginTop: 10,
+    
   },
   subtitle: {
     fontSize: 36,
     color: "#38434D",
   },
 });
+
+

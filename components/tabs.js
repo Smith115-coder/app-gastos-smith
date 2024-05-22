@@ -13,20 +13,20 @@ export default function Tabs() {
 
           <Link href="/incomes" style={styles.tab_link}>
             <View style={styles.tabItem}>
-              <MaterialCommunityIcons name="account-cash" size={30} color="black" />
+              <MaterialCommunityIcons name="account-cash" size={30} color="white" />
               <Text style={styles.tabText}>Ingresos</Text>
             </View>
           </Link>
           
-          <Link href="/" style={styles.tab_link}>
+          <Link href="/home" style={styles.tab_link}>
             <View>
-            <Entypo name="home" size={30} color="black" />
+            <Entypo name="home" size={30} color="white" />
             </View>
           </Link>
           
           <Link href="/expenses" style={styles.tab_link}>
             <View style={styles.tabItem}>
-            <MaterialCommunityIcons name="cash-remove" size={35} color="black" />
+            <MaterialCommunityIcons name="cash-remove" size={35} color="white" />
             <Text style={styles.tabText}>Gastos</Text>
             </View>
           </Link>
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 50,
     borderTopRightRadius: 50,
     justifyContent: "space-around",
-    backgroundColor: "#0bb188",
+    backgroundColor: "#262626",
   },
   tab_link: {
     color: "#ffffff",
@@ -72,5 +72,7 @@ const styles = StyleSheet.create({
   tabText: {
     marginTop: 0,
     fontSize: 10,
+    color: "white",
+    
   },
 });

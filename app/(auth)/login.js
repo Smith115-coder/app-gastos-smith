@@ -1,32 +1,67 @@
 import { StyleSheet, Text, View, SafeAreaView, TextInput, TouchableOpacity, Image } from "react-native";
-import React from "react";
-import { Link, Redirect } from "expo-router";
+import React, { useState } from "react";
+import { Link, Redirect, httpRequest } from "expo-router";
+import axios from "axios";
 
 export default function Page() {
-  const user = false;
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState();
 
-  if (user) {
-    return (<Redirect href="/expenses" />);
-  }
+
+  async function httpRequest() {
+       await axios
+         .post(
+           "http://192.168.31.244:8000/api/v1/sanctum/login",
+           {
+             email: email,
+             password: password,
+             device_name: "daniel_cell",
+           },
+           {
+             headers: {
+               Accept: "application/vnd.api+json",
+             },
+           }
+         )
+         .then((response) => {
+           console.log(response.data);
+         })
+         .catch((error) => {
+           console.log(error.response.data);
+           setError(error.response.data.errors.email)
+         });
+     }
+
 
   return (
     <View style={styles.container}>
+      
       <View>
         <Image source={require("../../assets/user2.png")} style={styles.profile} />
       </View>
 
       <View style={styles.card}>
-        <Text></Text>
+
+        <View><Text>Acceso</Text></View>
+
+        <Text>Correo electrónico: </Text>
         <View style={styles.textBox} >
-          <TextInput placeholder="Correo electrónico" style={{ paddingHorizontal: 15 }} />
+          <TextInput placeholder="user@example.com" style={{ paddingHorizontal: 15 }}
+          value={email}
+          onChangeText={setEmail}  />
         </View>
 
+        <Text>Contraseña: </Text>
         <View style={styles.textBox} >
-          <TextInput placeholder="Contraseña" style={{ paddingHorizontal: 15 }} />
+          <TextInput placeholder="example2&" style={{ paddingHorizontal: 15 }} 
+          value={password}
+          onChangeText={setPassword} />
         </View>
 
         <View style={styles.btnConteiner}>
-          <TouchableOpacity style={styles.btnBox}>
+          <TouchableOpacity style={styles.btnBox} onPress= {httpRequest}>
             <Text style={styles.btnText}>Iniciar Sesión</Text>
           </TouchableOpacity>
         </View>
@@ -95,6 +130,11 @@ const styles = StyleSheet.create({
     color: "#6d6d6d",
     paddingTop: 30,
     textDecorationLine: "underline",
+  },
+  TextP: {
+    backgroundColor: "#3A403D",
+    alignItems: "center",
+
   }
 
 });
