@@ -1,11 +1,63 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import PieChart from 'react-native-pie-chart';
+import axios from 'axios';
 
 const PieCharts = () => {
+  const [income, setIncome] = useState(0);
+  const [expenses, setExpenses] = useState(0);
+  const [error, setError] = useState(null);
+
+  const fetchData = async () => {
+    try {
+      const expensesResponse = await axios.get('https://api.tectest.click/api/expenses');
+      const expensesData = expensesResponse.data;
+      const totalExpenses = expensesData.reduce((total, expense) => {
+        return total + expense.amount;
+      }, 0);
+      
+      setExpenses(totalExpenses);
+  
+      const incomeResponse = await axios.get('https://api.tectest.click/api/incomes');
+      const incomeData = incomeResponse.data;
+      const totalIncome = incomeData.reduce((total, income) => {
+        return total + income.amount;
+      }, 0);
+      
+      setIncome(totalIncome);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      setError(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+
+    const intervalId = setInterval(fetchData, 2000); 
+    return () => clearInterval(intervalId); 
+  }, []);
+
+  if (error) {
+    return (
+      <View style={styles.errorContainer}>
+        <Text style={styles.errorText}>Error: {error.message}</Text>
+      </View>
+    );
+  }
+
+  const totalSeries = income + expenses;
+  if (totalSeries === 0) {
+    return (
+      <View style={styles.errorContainer}>
+        <Text style={styles.errorText}>No se encontraron datos de ingresos o gastos</Text>
+      </View>
+    );
+  }
+
   const widthAndHeight = 200;
-  const series = [670, 330];
-  const sliceColor = ['#F44336', '#0aa324'];
+  const series = [income, expenses];
+  const sliceColor = ['#0aa324', '#F44336'];
   const labels = ["Ingresos", "Gastos"];
 
   return (
@@ -57,7 +109,15 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'black',
   },
+  errorContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  errorText: {
+    fontSize: 16,
+    color: 'red',
+  },
 });
 
 export default PieCharts;
-

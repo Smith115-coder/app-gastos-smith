@@ -4,21 +4,11 @@ import { View, Text, StyleSheet, ActivityIndicator } from "react-native";
 
 
 export default function home() {
-  
-
-     
-
-
 
   return (
-         <View>
-          <Redirect href="/expenses" />
+    <Redirect href="/expenses" />
 
-        </View> 
-
-
-        
-    );
+  );
 
 
 
@@ -36,19 +26,19 @@ const styles = StyleSheet.create({
     backgroundColor: "#e3b81c",
     justifyContent: "center",
     alignItems: "center",
-    
+
   },
   main: {
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-   
+
   },
   text: {
     color: "#3d220b",
     fontSize: 20,
     marginTop: 10,
-    
+
   },
   subtitle: {
     fontSize: 36,

@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@react-native-community/art": "^1.2.0",
-    "axios": "^1.6.8",
+    "axios": "^1.7.2",
     "expo": "~51.0.7",
     "expo-constants": "~16.0.1",
     "expo-linking": "~6.3.1",

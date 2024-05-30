@@ -22,7 +22,7 @@ const Layout = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#ecd9e9",
+    backgroundColor: "#f5f5f5",
     alignItems: "center",
     justifyContent: "space-between",
   },

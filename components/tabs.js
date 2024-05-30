@@ -4,6 +4,7 @@ import { Link } from "expo-router";
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
 
 export default function Tabs() {
   return (
@@ -20,7 +21,8 @@ export default function Tabs() {
           
           <Link href="/home" style={styles.tab_link}>
             <View>
-            <Entypo name="home" size={30} color="white" />
+            <AntDesign name="close" size={35} color="white" />
+            <Text style={styles.tabText}></Text>
             </View>
           </Link>
           
@@ -43,15 +45,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     paddingHorizontal: 0,
     paddingVertical: 0,
-  },
-  shadow: {
-    // borderRadius: 30,
-    // shadowOffset: { width: 40, height: 40 },
-    // shadowColor: "#784aed",
-    // shadowOpacity: 1,
-    // elevation: 5,
-    // backgroundColor: "#0000",
-    // padding: 1,
   },
   tabs: {
     flexDirection: "row",
