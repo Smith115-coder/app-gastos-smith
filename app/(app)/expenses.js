@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity, Alert, Modal, TextInput, Button } from "react-native";
+import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity, Alert, Modal, TextInput } from "react-native";
 import axios from 'axios';
-import PieCharts from "../../components/pieCharts";
 import { AntDesign } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 
@@ -141,10 +140,6 @@ export default function Expenses() {
         showsHorizontalScrollIndicator={false}
         style={styles.main}
       >
-        <View style={styles.card}>
-          <PieCharts />
-        </View>
-
         <View style={styles.separatorContainer}>
           <Text style={styles.separatorText}>Movimientos</Text>
         </View>
@@ -162,10 +157,10 @@ export default function Expenses() {
 
             <View style={styles.icons}>
               <TouchableOpacity style={{ marginBottom: 10 }} onPress={() => handleEdit(income, 'income')}>
-                <FontAwesome5 name="edit" size={24} color="black" />
+                <FontAwesome5 name="file-signature" size={24} color="blue" />
               </TouchableOpacity>
               <TouchableOpacity onPress={() => handleDelete(income.id, 'income')}>
-                <AntDesign name="closecircle" size={24} color="black" />
+                <AntDesign name="delete" size={24} color="red" />
               </TouchableOpacity>
             </View>
           </View>
@@ -182,11 +177,11 @@ export default function Expenses() {
             </View>
 
             <View style={styles.icons}>
-              <TouchableOpacity style={{ marginBottom: 10 }} onPress={() => handleEdit(expense, 'expense')}>
-                <FontAwesome5 name="edit" size={24} color="black" />
+              <TouchableOpacity style={{ marginBottom: 10 }} onPress={() => handleEdit(income, 'income')}>
+                <FontAwesome5 name="file-signature" size={24} color="blue" />
               </TouchableOpacity>
-              <TouchableOpacity onPress={() => handleDelete(expense.id, 'expense')}>
-                <AntDesign name="closecircle" size={24} color="black" />
+              <TouchableOpacity onPress={() => handleDelete(income.id, 'income')}>
+                <AntDesign name="delete" size={24} color="red" />
               </TouchableOpacity>
             </View>
           </View>
@@ -221,8 +216,12 @@ export default function Expenses() {
             placeholder="Fecha (YYYY-MM-DD)"
           />
           <View style={styles.buttonContainer}>
-            <Button title="Guardar" onPress={saveEdit} />
-            <Button title="Cancelar" onPress={() => setModalVisible(false)} />
+            <TouchableOpacity style={styles.saveButton} onPress={saveEdit}>
+              <Text style={styles.buttonText}>Guardar</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={[styles.cancelButton, styles.redButton]} onPress={() => setModalVisible(false)}>
+              <Text style={styles.buttonText}>Cancelar</Text>
+            </TouchableOpacity>
           </View>
         </View>
       </Modal>
@@ -244,22 +243,6 @@ const styles = StyleSheet.create({
   subtitle: {
     fontSize: 36,
     color: "#38434D",
-  },
-  card: {
-    backgroundColor: "white",
-    borderRadius: 20,
-    width: "100%",
-    padding: 20,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
-    marginTop: 80,
-    marginBottom: 20,
   },
   item: {
     backgroundColor: '#fefefe',
@@ -333,5 +316,27 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly",
     width: '100%',
     marginTop: 10,
+  },
+  saveButton: {
+    backgroundColor: '#4CAF50',
+    borderRadius: 20,
+    padding: 10,
+    width: '40%',
+    alignItems: 'center',
+  },
+  cancelButton: {
+    backgroundColor: '#f44336',
+    borderRadius: 20,
+    padding: 10,
+    width: '40%',
+    alignItems: 'center',
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  redButton: {
+    backgroundColor: '#f44336',
   },
 });

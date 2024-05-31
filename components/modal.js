@@ -12,7 +12,7 @@ const CustomModal = ({ modalVisible, setModalVisible, incomeDescription, setInco
       }}>
       <View style={styles.centeredView}>
         <View style={styles.modalView}>
-          <Text style={styles.modalText}>Registrar Ingreso</Text>
+          <Text style={styles.modalText}>Registrar Ganancias</Text>
           <TextInput
             style={styles.input}
             placeholder="Descripción"

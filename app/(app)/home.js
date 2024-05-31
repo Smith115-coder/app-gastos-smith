@@ -20,6 +20,7 @@ export default function home() {
     useShadowColorFromDataset: false 
   };
   return (
+    
     <View style={styles.container}>
       <View style={styles.chartContainer}>
         <ProgressChart

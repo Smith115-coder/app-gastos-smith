@@ -36,7 +36,7 @@ export default function Header() {
         }),
       });
       if (response.ok) {
-        console.log(`Datos de ${type === 'income' ? 'ingreso' : 'gasto'} enviados con éxito a la API.`);
+        console.log(`Datos de ${type === 'income' ? 'ingreso' : 'gasto'}Datos guardados.`);
         
       } else {
         console.error('Error al enviar datos a la API:', response.statusText);
@@ -75,7 +75,7 @@ export default function Header() {
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <Text style={styles.modalText}>
-              {showIncomeForm ? 'Registrar Ingreso' : 'Registrar Gasto'}
+              {showIncomeForm ? 'Registrar Ganancia' : 'Registrar Pago'}
             </Text>
 
             {showIncomeForm ? (
@@ -148,13 +148,7 @@ export default function Header() {
         </View>
       </Modal>
 
-      <TouchableOpacity
-        style={styles.fabLocation}
-        onPress={() => setModalVisible(true)}>
-        <View style={styles.fab}>
-          <AntDesign name="plus" style={styles.fabIcon} />
-        </View>
-      </TouchableOpacity>
+    
     </View>
   );
 }
@@ -163,7 +157,7 @@ const styles = StyleSheet.create({
   container: {
     zIndex: 2,
     width: "100%",
-    backgroundColor: "#262626",
+    backgroundColor: "#4BDAE8",
     alignItems: "center",
     justifyContent: "center",
     paddingTop: 72,
