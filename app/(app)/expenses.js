@@ -148,9 +148,8 @@ export default function Expenses() {
         <Text style={styles.sectionTitle}>Ingresos</Text>
         {incomes.map((income) => (
           <View key={income.id} style={styles.item}>
-            <Image source={require('../../assets/iconIncomes.png')} style={styles.itemImage} />
             <View style={styles.itemTextContainer}>
-              <Text style={styles.itemTitle}>Monto: ${income.amount}</Text>
+              <Text style={styles.itemTitle}>${income.amount}</Text>
               <Text style={styles.itemDescription}>{income.description}</Text>
               <Text style={styles.itemDescription}>{income.date}</Text>
             </View>
@@ -166,25 +165,24 @@ export default function Expenses() {
           </View>
         ))}
 
-        <Text style={styles.sectionTitle}>Gastos</Text>
-        {expenses.map((expense) => (
-          <View key={expense.id} style={styles.item}>
-            <Image source={require('../../assets/iconExpenses.png')} style={styles.itemImage} />
-            <View style={styles.itemTextContainer}>
-              <Text style={styles.itemTitle}>Monto: ${expense.amount}</Text>
-              <Text style={styles.itemDescription}>{expense.description}</Text>
-              <Text style={styles.itemDescription}>{expense.date}</Text>
-            </View>
+<Text style={styles.sectionTitle}>Gastos</Text>
+{expenses.map((expense) => (
+  <View key={expense.id} style={styles.item}>
+    <View style={styles.itemTextContainer}>
+      <Text style={styles.itemTitle}>${expense.amount}</Text>
+      <Text style={styles.itemDescription}>{expense.description}</Text>
+      <Text style={styles.itemDescription}>{expense.date}</Text>
+    </View>
 
-            <View style={styles.icons}>
-              <TouchableOpacity style={{ marginBottom: 10 }} onPress={() => handleEdit(income, 'income')}>
-                <FontAwesome5 name="file-signature" size={24} color="blue" />
-              </TouchableOpacity>
-              <TouchableOpacity onPress={() => handleDelete(income.id, 'income')}>
-                <AntDesign name="delete" size={24} color="red" />
-              </TouchableOpacity>
-            </View>
-          </View>
+    <View style={styles.icons}>
+      <TouchableOpacity style={{ marginBottom: 10 }} onPress={() => handleEdit(expense, 'expense')}>
+        <FontAwesome5 name="file-signature" size={24} color="blue" />
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => handleDelete(expense.id, 'expense')}>
+        <AntDesign name="delete" size={24} color="red" />
+      </TouchableOpacity>
+    </View>
+  </View>
         ))}
       </ScrollView>
 

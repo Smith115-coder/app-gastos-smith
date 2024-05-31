@@ -189,21 +189,21 @@ const styles = StyleSheet.create({
     alignItems: "center", // Alinea el contenido verticalmente
   },
   fabIcon: {
-    color: "white",
+    color: "#2DF2EC",
     position: 'relative',
     padding: 9,
     fontSize: 30, // Ajusta el tamaño del icono según sea necesario
   },
   centeredView: {
-    flex: 1,
+    flex: 0,
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 22,
+    marginTop: 50,
   },
   modalView: {
     margin: 20,
     backgroundColor: "white",
-    borderRadius: 20,
+    borderRadius: 45,
     padding: 35,
     alignItems: "center",
     shadowColor: "#000",
@@ -227,11 +227,11 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   input: {
-    height: 40,
-    borderColor: "gray",
-    borderWidth: 1,
-    borderRadius: 5,
-    marginBottom: 10,
+    height: 50,
+    borderColor: "#2DF2EC",
+    borderWidth: 2,
+    borderRadius: 1,
+    marginBottom: 4,
     paddingLeft: 10,
     width: '100%',
   },
@@ -242,14 +242,14 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   button: {
-    borderRadius: 15,
+    borderRadius: 10,
     padding: 10,
     elevation: 2,
     flex: 1,
     marginHorizontal: 12,
   },
   buttonsave: {
-    backgroundColor: "#3d3d3d",
+    backgroundColor: "green",
   },
   buttonCancel: {
     backgroundColor: "red",

@@ -196,7 +196,7 @@ const styles = StyleSheet.create({
   modalView: {
     margin: 20,
     backgroundColor: "white",
-    borderRadius: 20,
+    borderRadius: 50,
     padding: 35,
     alignItems: "center",
     shadowColor: "#000",
@@ -242,7 +242,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 12,
   },
   buttonsave: {
-    backgroundColor: "#3d3d3d",
+    backgroundColor: "green",
   },
   buttonCancel: {
     backgroundColor: "red",
@@ -258,7 +258,7 @@ const styles = StyleSheet.create({
     right: 15,
   },
   switchFormText: {
-    color: "#262626",
+    color: "green",
     fontWeight: "bold",
     textAlign: "center",
     textDecorationLine: "underline"
